@@ -55,7 +55,7 @@ export default function ProjectPage() {
           Back to Portfolio
         </Link>
 
-        <div class="project-page__category-wrapper">
+        <div className="project-page__category-wrapper">
           <span className="project-page__category">
             {project.category}
           </span>
