@@ -27,6 +27,16 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Create production environment
+        run: |
+          cat > .env.production << 'EOF'
+          VITE_API_BASE_URL=${{ vars.VITE_API_BASE_URL }}
+          VITE_OAUTH_AUTHORIZE_URL=${{ vars.VITE_OAUTH_AUTHORIZE_URL }}
+          VITE_OAUTH_TOKEN_URL=${{ vars.VITE_OAUTH_TOKEN_URL }}
+          VITE_OAUTH_CLIENT_ID=${{ vars.VITE_OAUTH_CLIENT_ID }}
+          VITE_OAUTH_REDIRECT_URI=${{ vars.VITE_OAUTH_REDIRECT_URI }}
+          EOF
+
       - name: Install dependencies
         run: npm ci
 
