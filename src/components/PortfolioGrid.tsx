@@ -1,34 +1,64 @@
-import { AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { SearchX } from "lucide-react";
 
 import type { PortfolioProject } from "../types/portfolio";
 import PortfolioCard from "./PortfolioCard";
 
 interface PortfolioGridProps {
   projects: PortfolioProject[];
+  viewMode?: "grid" | "list";
 }
 
 export default function PortfolioGrid({
   projects,
+  viewMode = "grid",
 }: PortfolioGridProps) {
   if (projects.length === 0) {
     return (
-      <div className="portfolio-grid__empty">
-        <h2>No projects found</h2>
-        <p>There are no projects in this category yet.</p>
-      </div>
+      <motion.div
+        className="portfolio-grid__empty"
+        initial={{
+          opacity: 0,
+          scale: 0.96,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+        }}
+      >
+        <div className="portfolio-grid__empty-icon">
+          <SearchX size={30} />
+        </div>
+
+        <p className="section-eyebrow">
+          No matching projects
+        </p>
+
+        <h2>The portfolio came up empty.</h2>
+
+        <p>
+          Try changing your search, category, or sort
+          settings.
+        </p>
+      </motion.div>
     );
   }
 
   return (
-    <div className="portfolio-grid">
-      <AnimatePresence mode="popLayout">
-        {projects.map((project) => (
+    <motion.div
+      layout
+      className={`portfolio-grid portfolio-grid--${viewMode}`}
+    >
+      <AnimatePresence mode="popLayout" initial={false}>
+        {projects.map((project, index) => (
           <PortfolioCard
             key={project.id}
             project={project}
+            index={index}
+            viewMode={viewMode}
           />
         ))}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
