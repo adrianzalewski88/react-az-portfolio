@@ -9,11 +9,12 @@ permissions:
   contents: read
 
 concurrency:
-  group: production
-  cancel-in-progress: true
+  group: react-portfolio-production
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
+    name: Build and Deploy React Portfolio
     runs-on: ubuntu-latest
 
     steps:
@@ -30,10 +31,21 @@ jobs:
         run: npm ci
 
       - name: TypeScript check
-        run: npx tsc --noEmit
+        run: npm run typecheck
 
       - name: Build React application
         run: npm run build
+
+      - name: Verify production assets
+        run: |
+          set -e
+
+          test -f dist/index.html
+          test -f dist/images/portfolio-banner-background.jpg
+          test -f dist/images/portfolio-owner-picture.jpg
+          test -f dist/images/project-placeholder.jpg
+
+          echo "Production assets verified."
 
       - name: Configure SSH
         run: |
@@ -50,3 +62,18 @@ jobs:
           rsync -az --delete \
             ./dist/ \
             "${{ secrets.LINODE_USER }}@${{ secrets.LINODE_HOST }}:/var/www/html/portfolio.adrian-zalewski.com/public_html/"
+
+      - name: Verify production deployment
+        run: |
+          ssh "${{ secrets.LINODE_USER }}@${{ secrets.LINODE_HOST }}" << 'EOF'
+            set -e
+
+            APP="/var/www/html/portfolio.adrian-zalewski.com/public_html"
+
+            test -f "$APP/index.html"
+            test -f "$APP/images/portfolio-banner-background.jpg"
+            test -f "$APP/images/portfolio-owner-picture.jpg"
+            test -f "$APP/images/project-placeholder.jpg"
+
+            echo "Production deployment verified."
+          EOF
