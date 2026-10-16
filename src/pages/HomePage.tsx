@@ -115,7 +115,7 @@ export default function HomePage() {
   const heroOpacity = useTransform(
     scrollY,
     [0, 650],
-    [1, 0.2]
+    [1, 0.7]
   );
 
   useEffect(() => {
@@ -557,15 +557,29 @@ export default function HomePage() {
                 architecture.
               </p>
 
-              <a
-                href="https://portfolio-source.adrian-zalewski.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-link"
-              >
-                Explore the Laravel source application
-                <ExternalLink size={16} />
-              </a>
+              <div>
+                <a
+                  href="https://portfolio-source.adrian-zalewski.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-link"
+                >
+                  Explore the Laravel source application
+                  <ExternalLink size={16} />
+                </a>
+              </div>
+
+              <div>
+                <a
+                  href="/developer/authentication"
+                  rel="noreferrer"
+                  className="text-link text-link-alt"
+                >
+                  View authentication demo
+                  <ExternalLink size={16} />
+                </a>
+              </div>
+
             </div>
           </motion.div>
         </div>
