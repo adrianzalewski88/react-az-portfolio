@@ -30,7 +30,7 @@ export default function AuthCallbackPage() {
         setStatus("Authentication successful.");
 
         setTimeout(() => {
-          navigate("/");
+          navigate("/developer/authentication");
         }, 800);
       } catch (error) {
         console.error(error);
@@ -47,12 +47,16 @@ export default function AuthCallbackPage() {
   }, [navigate, searchParams]);
 
   return (
-    <main>
-      <section>
-        <h1>Laravel Authentication</h1>
+    <main className="developer-auth-page">
+      <div className="developer-auth-page__background" />
 
-        <p>{status}</p>
-      </section>
+        <div className="section-container">
+          <section>
+            <h1>Laravel Authentication</h1>
+
+            <p>{status}</p>
+          </section>
+        </div>
     </main>
   );
 }

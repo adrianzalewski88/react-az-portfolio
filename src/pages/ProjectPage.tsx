@@ -181,13 +181,15 @@ export default function ProjectPage() {
               duration: 0.8,
             }}
           >
-            <Link
-              to="/"
-              className="project-page__back"
-            >
-              <ArrowLeft size={17} />
-              Back to portfolio
-            </Link>
+            <div>
+              <Link
+                to="/"
+                className="project-page__back"
+              >
+                <ArrowLeft size={17} />
+                Back to portfolio
+              </Link>
+            </div>
 
             <div className="project-hero__category">
               <Layers3 size={15} />
