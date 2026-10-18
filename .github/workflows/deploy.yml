@@ -43,6 +43,15 @@ jobs:
       - name: TypeScript check
         run: npm run typecheck
 
+      - name: Run Vitest tests
+        run: npm run test:run
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright smoke tests
+        run: npm run test:e2e
+
       - name: Build React application
         run: npm run build
 
