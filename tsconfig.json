@@ -14,7 +14,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node"]
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "tests",
+    "e2e",
+    "vitest.config.ts",
+    "playwright.config.ts"
+  ]
 }
