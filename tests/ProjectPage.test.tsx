@@ -41,7 +41,7 @@ describe("ProjectPage", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: /Back to portfolio/ }),
-    ).toHaveAttribute("href", "/");
+    ).toHaveAttribute("href", "/#projects");
   });
 
   it("shows the not-found state when the API fails", async () => {
