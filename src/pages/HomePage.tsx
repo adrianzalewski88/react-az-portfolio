@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useLocation } from 'react-router-dom';
 import {
   motion,
   type Variants,
@@ -74,6 +75,8 @@ const stagger = {
 };
 
 export default function HomePage() {
+  const location = useLocation();
+
   const [activeCategory, setActiveCategory] =
     useState("all");
 
@@ -149,6 +152,30 @@ export default function HomePage() {
 
     void loadPortfolio();
   }, []);
+
+  useEffect(() => {
+    if (location.hash !== "#projects" || loading) {
+      return;
+    }
+
+    let secondFrame = 0;
+
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => {
+        document
+          .getElementById("projects")
+          ?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+    };
+  }, [location.hash, location.pathname, loading]);
 
   const categoryCounts = useMemo(() => {
     return projects.reduce<Record<string, number>>(

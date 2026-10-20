@@ -10,6 +10,7 @@ $text: #101828;
 $text-soft: #475467;
 $text-muted: #667085;
 $text-light: #98a2b3;
+$white: #ffffff;
 
 $border: rgba(16, 24, 40, 0.09);
 $border-strong: rgba(31, 105, 255, 0.22);
@@ -527,7 +528,7 @@ img {
   align-items: center;
   gap: 9px;
 
-  color: $text-muted;
+  color: $white;
 
   font-size: 0.68rem;
   font-weight: 800;
@@ -1879,7 +1880,7 @@ img {
   margin: 0;
 
   font-size: clamp(4rem, 9vw, 9rem);
-  letter-spacing: -0.08em;
+  letter-spacing: -0.03em;
   line-height: 0.86;
 }
 
@@ -2736,7 +2737,12 @@ img {
 ===================================================== */
 
 @media (max-width: 1100px) {
-  .portfolio-grid.portfolio-grid--grid {
+
+  .project-hero {
+    min-height: min(550px, 80vh);
+  }
+
+  .portfolio-grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
@@ -2795,6 +2801,10 @@ img {
   .about-photo {
     max-width: 420px;
     margin: 0 auto;
+  }
+
+  .project-hero {
+    min-height: min(350px, 80vh);
   }
 
   .portfolio-heading {
@@ -2934,7 +2944,7 @@ img {
   }
 
   .project-hero {
-    min-height: 650px;
+    min-height: 250px;
   }
 
   .project-hero__content {

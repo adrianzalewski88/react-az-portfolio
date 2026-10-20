@@ -11,9 +11,14 @@ import {
 import {
   ArrowLeft,
   ArrowUpRight,
+  BriefcaseBusiness,
   Code2,
+  Globe2,
   Layers3,
+  Mail,
+  MapPin,
   Sparkles,
+  UserRound,
 } from "lucide-react";
 
 import {
@@ -125,7 +130,7 @@ export default function ProjectPage() {
           </p>
 
           <Link
-            to="/"
+            to="/#projects"
             className="button button--primary"
           >
             <ArrowLeft size={17} />
@@ -183,7 +188,7 @@ export default function ProjectPage() {
           >
             <div>
               <Link
-                to="/"
+                to="/#projects"
                 className="project-page__back"
               >
                 <ArrowLeft size={17} />
@@ -237,7 +242,7 @@ export default function ProjectPage() {
               </div>
 
               <Link
-                to="/"
+                to="/#projects"
                 className="project-sidebar-link"
               >
                 Browse all projects
@@ -291,7 +296,7 @@ export default function ProjectPage() {
               </div>
 
               <Link
-                to="/"
+                to="/#projects"
                 className="text-link"
               >
                 View complete portfolio
@@ -352,6 +357,119 @@ export default function ProjectPage() {
           </div>
         </section>
       )}
+            {/* =================================================
+          FOOTER
+      ================================================= */}
+
+      <footer className="site-footer">
+        <div className="site-footer__glow" />
+
+        <div className="section-container">
+          <div className="site-footer__top">
+            <div>
+              <p className="section-eyebrow">
+                Let's connect
+              </p>
+
+              <h2>
+                Have a project,
+                <br />
+                idea, or opportunity?
+              </h2>
+            </div>
+
+            <a
+              href="mailto:fictionarts@gmail.com"
+              className="button button--primary"
+            >
+              Start a conversation
+              <Mail size={17} />
+            </a>
+          </div>
+
+          <div className="site-footer__links">
+            <a href="mailto:fictionarts@gmail.com">
+              <Mail size={17} />
+              <span>
+                <small>Email</small>
+                fictionarts@gmail.com
+              </span>
+            </a>
+
+            <a href="tel:+14013383998">
+              <BriefcaseBusiness size={17} />
+              <span>
+                <small>Phone</small>
+                (401) 338-3998
+              </span>
+            </a>
+
+            <div>
+              <MapPin size={17} />
+              <span>
+                <small>Location</small>
+                Cumberland, RI, USA
+              </span>
+            </div>
+
+            <a
+              href="https://adrian-zalewski.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Globe2 size={17} />
+              <span>
+                <small>Website</small>
+                adrian-zalewski.com
+              </span>
+            </a>
+
+            <a
+              href="https://github.com/adrianzalewski88"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Code2 size={17} />
+              <span>
+                <small>GitHub</small>
+                adrianzalewski88
+              </span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/adrian-zalewski-1988-fa/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <BriefcaseBusiness size={17} />
+              <span>
+                <small>LinkedIn</small>
+                Adrian Zalewski
+              </span>
+            </a>
+          </div>
+
+          <div className="site-footer__bottom">
+            <span>
+              © {new Date().getFullYear()} Adrian
+              Zalewski
+            </span>
+
+            <a
+              href="https://portfolio-source.adrian-zalewski.com/login"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <UserRound size={15} />
+              Developer Authentication
+            </a>
+
+            <span>
+              React · TypeScript · Laravel · OAuth2
+            </span>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
